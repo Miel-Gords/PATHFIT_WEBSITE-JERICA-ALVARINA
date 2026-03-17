@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Arnis | Group Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button class="makers-btn" onclick="openMakersModal()">Group Members</button>
+
+    <div class="container">
+        <header class="glass-panel text-center">
+            <h1>The Art of Arnis</h1>
+            <p class="subtitle">The National Martial Art and Sport of the Philippines</p>
+            <nav class="main-nav">
+                <a href="#grip">Basic Grip</a>
+                <a href="#stance">Fighting Stance</a>
+                <a href="#strikes">12 Strikes</a>
+                <a href="#blocks">Blocking</a>
+                <a href="#footwork">Footwork</a>
+            </nav>
+        </header>
+
+        <main class="content-grid">
+            <section id="grip" class="glass-panel">
+                <h2>1. Basic Grip</h2>
+                <p>A proper grip is essential in Arnis to deliver strong strikes without disarming yourself.</p>
+                <ul>
+                    <li>Hold the stick one fist away from the base (the <strong>punyo</strong>).</li>
+                    <li>Wrap your four fingers tightly around the stick.</li>
+                    <li>Place your thumb over your index finger. Keep your grip firm but relaxed to allow wrist flexibility.</li>
+                </ul>
+                <div class="media-container">
+                    <img src="images/basicgrip.jpg" alt="Demonstration of Arnis Basic Grip">
+                </div>
+            </section>
+
+            <section id="stance" class="glass-panel">
+                <h2>2. Basic Fighting Stance</h2>
+                <p>The fighting stance provides balance, mobility, and readiness for both offense and defense.</p>
+                <ul>
+                    <li>Stand with your feet shoulder-width apart.</li>
+                    <li>Step your dominant foot forward.</li>
+                    <li>Keep your knees slightly bent to lower your center of gravity.</li>
+                    <li>Hold your weapon hand in front at chest level, and your free hand near your chest.</li>
+                </ul>
+                <div class="media-container">
+                    <img src="images/basicfstance.jpg" alt="Demonstration of Arnis Fighting Stance">
+                </div>
+            </section>
+
+            <section id="strikes" class="glass-panel full-width">
+                <h2>3. The 12 Striking Techniques</h2>
+                <p>Click on any technique below to see a demonstration and description.</p>
+                
+                <div class="strikes-grid">
+                    <div class="strike-card" onclick="openModal(1)"><span class="number">1</span> Left temple</div>
+                    <div class="strike-card" onclick="openModal(2)"><span class="number">2</span> Right temple</div>
+                    <div class="strike-card" onclick="openModal(3)"><span class="number">3</span> Left shoulder</div>
+                    <div class="strike-card" onclick="openModal(4)"><span class="number">4</span> Right shoulder</div>
+                    <div class="strike-card" onclick="openModal(5)"><span class="number">5</span> Stomach thrust</div>
+                    <div class="strike-card" onclick="openModal(6)"><span class="number">6</span> Left chest thrust</div>
+                    <div class="strike-card" onclick="openModal(7)"><span class="number">7</span> Right chest thrust</div>
+                    <div class="strike-card" onclick="openModal(8)"><span class="number">8</span> Right lower leg</div>
+                    <div class="strike-card" onclick="openModal(9)"><span class="number">9</span> Left lower leg</div>
+                    <div class="strike-card" onclick="openModal(10)"><span class="number">10</span> Left eye poke</div>
+                    <div class="strike-card" onclick="openModal(11)"><span class="number">11</span> Right eye poke</div>
+                    <div class="strike-card" onclick="openModal(12)"><span class="number">12</span> Crown of head</div>
+                </div>
+
+                <div class="media-container video-container" style="margin-top: 2rem;">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Rqa897RhC_g?si=XTFUepo6DtzCTuHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section id="blocks" class="glass-panel">
+                <h2>4. Basic Blocking Techniques</h2>
+                <p>Defense is just as important as offense. Blocking involves meeting force with force or redirecting strikes.</p>
+                <ul>
+                    <li><strong>Inward Block:</strong> Used against strikes to the left side of your body.</li>
+                    <li><strong>Outward Block:</strong> Used against strikes to the right side of your body.</li>
+                    <li><strong>Downward Block:</strong> Used to defend against lower strikes to the knees.</li>
+                    <li><strong>Rising Block (Umbrella):</strong> Defends against overhead strikes.</li>
+                </ul>
+            </section>
+
+            <section id="footwork" class="glass-panel">
+                <h2>5. Basic Footwork</h2>
+                <p>Footwork is the foundation of evasion and positioning. Arnis heavily relies on the Triangle concept.</p>
+                <ul>
+                    <li><strong>Forward Triangle:</strong> Stepping diagonally forward. Used for closing distance.</li>
+                    <li><strong>Reverse Triangle:</strong> Stepping diagonally backward. Used to retreat with an angle advantage.</li>
+                </ul>
+                <div class="media-container">
+                    <img src="images/basicfwork.jpg" alt="Arnis Footwork Diagram">
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center">
+            <p>&copy; 2026 Arnis Group Project. Created for Educational Purposes.</p>
+        </footer>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">Strike Title</h3>
+            <div class="media-container">
+                <img id="modal-img" src="" alt="Strike Demonstration">
+            </div>
+            <p id="modal-desc" style="margin-top: 15px; color: var(--text-secondary);"></p>
+        </div>
+    </div>
+
+    <div id="makers-modal-overlay" class="modal-overlay">
+        <div class="modal-content glass-panel text-center">
+            <span class="close-btn" onclick="closeMakersModal()">&times;</span>
+            <h3 style="margin-bottom: 10px;">About the Makers</h3>
+            <p>This Arnis educational website was proudly created by:</p>
+            
+            <ul style="list-style: none; padding: 0; margin-top: 20px; font-size: 1.1rem; color: #fff;">
+                <li><strong>Student 1 Name</strong> - Lead Developer</li>
+                <li><strong>Student 2 Name</strong> - Content Writer</li>
+                <li><strong>Student 3 Name</strong> - Media & Graphics</li>
+                <li><strong>Student 4 Name</strong> - Researcher</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

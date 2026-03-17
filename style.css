@@ -1,0 +1,295 @@
+/* --- 1. CSS Variables for Professional Theming --- */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --accent-color: rgba(255, 255, 255, 0.25);
+    --transition-speed: 0.3s;
+}
+
+/* --- 2. Modern Reset & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- PERFORMANCE FIX: Moving the fixed background to a separate layer --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-gradient);
+    z-index: -1; /* Keeps the background behind your content */
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    /* Removed the lagging background-attachment: fixed from here */
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* --- 3. Utility Classes --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- 4. The Glassmorphism Component (PERFORMANCE OPTIMIZED) --- */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px); /* Slightly lowered for better frame rates */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    will-change: transform, backdrop-filter; /* Forces hardware acceleration */
+}
+
+/* --- 5. Header & Navigation --- */
+header h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.main-nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    transition: all var(--transition-speed) ease;
+    font-weight: 500;
+}
+
+.main-nav a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- 6. Layout Grids --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 800px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .full-width {
+        grid-column: 1 / -1;
+    }
+}
+
+/* --- 7. Lists & Content Styling --- */
+section h2 {
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Custom grid for the 12 strikes */
+.strikes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.strike-card {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background var(--transition-speed);
+    cursor: pointer;
+}
+
+.strike-card:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.number {
+    background: var(--accent-color);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* --- 8. Media Containers (Images/Videos) --- */
+.media-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border: 1px solid var(--glass-border);
+}
+
+.media-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-container {
+    aspect-ratio: 16 / 9;
+}
+
+/* --- 9. Modal (Pop-up) Styling (PERFORMANCE OPTIMIZED) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px); /* Lowered blur for the pop-up */
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-speed) ease;
+    will-change: opacity, backdrop-filter; /* Forces hardware acceleration */
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform var(--transition-speed) ease;
+    margin-bottom: 0;
+    will-change: transform;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #ff4c4c;
+}
+
+/* --- 10. Footer --- */
+footer {
+    margin-top: 3rem;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+/* --- 11. NEW: Makers Button Styling --- */
+.makers-btn {
+    position: fixed; /* Keeps it in the corner when scrolling */
+    top: 20px;
+    right: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100; /* Keeps it above the rest of the website */
+    transition: all var(--transition-speed) ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.makers-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Adjust button position on very small phone screens */
+@media (max-width: 600px) {
+    .makers-btn {
+        top: 10px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
